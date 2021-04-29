@@ -1,1 +1,1 @@
-FlutterThings
+This repo contains my Flutter projects
