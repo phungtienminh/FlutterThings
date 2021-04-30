@@ -48,6 +48,14 @@ class _HomePageState extends State<HomePage> {
     var url = Uri.parse(HTTPClient.sharedInstance.baseURL + "?expr=$properExpression");
     var response = await HTTPClient.sharedInstance.getRequest(url);
     
+    if (response == null) {
+      setState(() {
+        expression = "Error!";
+      });
+
+      return;
+    }
+
     if (response.statusCode == 200) {
       var result = response.body;
       setState(() {

@@ -13,13 +13,21 @@ class HTTPClient implements HTTPProtocol {
 
   @override
   Future<http.Response> getRequest(Uri url) async {
-    var response = await http.get(url);
-    return response;
+    try {
+      var response = await http.get(url);
+      return response;
+    } catch (e) {
+      return null;
+    }
   }
 
   @override
   Future<http.Response> postRequest(Uri url, Map<String, dynamic> params) async {
-    var response = await http.post(url, body: params);
-    return response;
+    try {
+      var response = await http.post(url, body: params);
+      return response;
+    } catch (e) {
+      return null;
+    }
   }
 }
