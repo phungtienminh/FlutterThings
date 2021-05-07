@@ -18,11 +18,11 @@ class HomePage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.orangeAccent,
               ),
-              accountName: Text("Phung Tien Minh"),
-              accountEmail: Text("phungtienminh@gmail.com"),
+              accountName: Text("Vit"),
+              accountEmail: Text("vit@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Theme.of(context).accentColor,
-                child: Text("P"),
+                child: Text("V"),
               ),
               otherAccountsPictures: <Widget>[
                 CircleAvatar(
