@@ -2,7 +2,26 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutterdrawer/another_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,8 +83,26 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: Text("Home Page"),
+      body: TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          AnotherPage(title: "Page One"),
+          AnotherPage(title: "Page Two"),
+        ],
+      ),
+      bottomNavigationBar: Material(
+        color: Colors.cyan,
+        child: TabBar(
+          controller: _tabController,
+          tabs: <Widget>[
+            Tab(
+              icon: Icon(Icons.favorite),
+            ),
+            Tab(
+              icon: Icon(Icons.email),
+            ),
+          ],
+        ),
       ),
     );
   }
